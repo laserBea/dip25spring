@@ -1,0 +1,8 @@
+path: D:\documents\code\py\dip\dataset
+train: D:\documents\code\py\dip\dataset\train
+val: D:\documents\code\py\dip\dataset\val
+test: D:\documents\code\py\dip\dataset\test
+nc: 2
+names:
+  0: blue_plate
+  1: green_plate
