@@ -78,6 +78,7 @@ python main.py
 ├── PTL.py              # 车牌识别核心算法
 ├── requirements.txt    # 依赖包列表
 ├── split.py            # CCPD数据集分割
+├── convert2YOLO.py            # CCPD数据集转yolo格式
 ├── test.py             # 模型测试
 ├── requirements.txt    # 
 ├── runs/              # YOLO模型权重
