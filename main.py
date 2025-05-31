@@ -19,7 +19,7 @@ class ImageEnhancer(QWidget):
         self.processed_cv = None
         self.original_pixmap = None
         self.processed_pixmap = None
-        self.model = YOLO('runs/detect/train4/weights/best.pt')
+        self.model = YOLO('runs/detect/train5/weights/best.pt')
         self.ocr = TextRecognition(model_name="PP-OCRv5_server_rec")
         self.init_ui()
 

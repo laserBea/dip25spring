@@ -2,7 +2,7 @@
 from ultralytics import YOLO
 
 def main():
-    model = YOLO('runs/detect/train2/weights/last.pt')
+    model = YOLO('yolov8n.pt')
     model.train(
         data='data.yaml',
         epochs=50,

@@ -41,42 +41,20 @@ def select_data(src_path, dst_train_path, dst_val_path, dst_test_path, num):
 
 if __name__ == "__main__":
     # CCPD19原始数据路径
-    root = "E:/BaiduNetdiskDownload/CCPD2019"
-    dataset_info = {
-        "ccpd_base": 0,
-        "ccpd_challenge": 200,
-        "ccpd_db": 200,
-        "ccpd_fn": 200,
-        "ccpd_rotate": 200,
-        "ccpd_tilt": 200,
-        "ccpd_weather": 200
-    }
-
-    # 输出路径
-    output_root = "D:/documents/code/py/dip/ccpd_blue"
-    train_path = os.path.join(output_root, "train")
-    val_path = os.path.join(output_root, "val")
-    test_path = os.path.join(output_root, "test")
-
-    # 执行划分
-    for subfolder, num in dataset_info.items():
-        src_path = os.path.join(root, subfolder)
-        select_data(
-            src_path=src_path,
-            dst_train_path=train_path,
-            dst_val_path=val_path,
-            dst_test_path=test_path,
-            num=num
-        )
-
-    # # CCPD20原始数据路径
-    # root = "E:/BaiduNetdiskDownload/CCPD2020/CCPD2020/ccpd_green"
+    # root = "E:/BaiduNetdiskDownload/CCPD2019"
     # dataset_info = {
-    #     "img": 5300
+    #     "ccpd_base": 6000,
+    #     "ccpd_blur":600,
+    #     "ccpd_challenge": 1500,
+    #     "ccpd_db": 300,
+    #     "ccpd_fn": 600,
+    #     "ccpd_rotate": 600,
+    #     "ccpd_tilt": 900,
+    #     "ccpd_weather": 300
     # }
     #
     # # 输出路径
-    # output_root = "D:/documents/code/py/dip/ccpd_green"
+    # output_root = "D:/documents/code/py/dip/ccpd_blue"
     # train_path = os.path.join(output_root, "train")
     # val_path = os.path.join(output_root, "val")
     # test_path = os.path.join(output_root, "test")
@@ -91,3 +69,26 @@ if __name__ == "__main__":
     #         dst_test_path=test_path,
     #         num=num
     #     )
+
+    # CCPD20原始数据路径
+    root = "E:/BaiduNetdiskDownload/CCPD2020/CCPD2020/ccpd_green"
+    dataset_info = {
+        "img": 7200
+    }
+
+    # 输出路径
+    output_root = "D:/documents/code/py/dip/ccpd_green"
+    train_path = os.path.join(output_root, "train")
+    val_path = os.path.join(output_root, "val")
+    test_path = os.path.join(output_root, "test")
+
+    # 执行划分
+    for subfolder, num in dataset_info.items():
+        src_path = os.path.join(root, subfolder)
+        select_data(
+            src_path=src_path,
+            dst_train_path=train_path,
+            dst_val_path=val_path,
+            dst_test_path=test_path,
+            num=num
+        )
