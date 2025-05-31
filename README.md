@@ -77,11 +77,15 @@ python main.py
 ├── main.py              # 主程序入口
 ├── PTL.py              # 车牌识别核心算法
 ├── requirements.txt    # 依赖包列表
+├── split.py            # CCPD数据集分割
+├── convert2YOLO.py            # CCPD数据集转yolo格式
+├── test.py             # 模型测试
+├── requirements.txt    # 
 ├── runs/              # YOLO模型权重
 │   └── detect/
 │       └── train4/
 │           └── weights/
-│               └── best.pt
+│               └── best.pt    #车牌检测模型
 └── dataset/           # 训练数据集
 ```
 
@@ -92,6 +96,7 @@ python main.py
 2. [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR)：用于文字识别
 3. [OpenCV](https://opencv.org/)：用于图像处理
 4. [PyQt5](https://www.riverbankcomputing.com/software/pyqt/)：用于GUI界面
+5. [CCPD](https://github.com/detectRecog/CCPD): 用于车牌检测模型训练
 
 ## 常见问题
 
