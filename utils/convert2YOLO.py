@@ -127,8 +127,8 @@ class YOLOFormatConverter:
 if __name__ == '__main__':
     # 转换蓝牌数据（class_id=0）
     blue_converter = YOLOFormatConverter(
-        data_path="./ccpd_blue",
-        save_path="./dataset",
+        data_path="../ccpd_blue",
+        save_path="../dataset",
         class_id=0,
         prefix="blue_plate"
     )
@@ -136,8 +136,8 @@ if __name__ == '__main__':
 
     # 转换绿牌数据（class_id=1）
     green_converter = YOLOFormatConverter(
-        data_path="./ccpd_green",
-        save_path="./dataset",
+        data_path="../ccpd_green",
+        save_path="../dataset",
         class_id=1,
         prefix="green_plate"
     )
