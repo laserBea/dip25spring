@@ -37,7 +37,9 @@ class ImageEnhancer(QWidget):
             "锐化",
             "高斯模糊",
             "边缘增强",
-            "降噪"
+            "降噪",
+            "膨胀",
+            "腐蚀"
         ])
 
         self.btn_open = QPushButton("打开图像")
@@ -109,6 +111,16 @@ class ImageEnhancer(QWidget):
         elif method == "降噪":
             denoised = cv2.fastNlMeansDenoisingColored(img, None, 10, 10, 7, 21)
             self.processed_cv = denoised
+
+        elif method == "腐蚀":
+            kernel = cv2.getStructuringElement(cv2.MORPH_CROSS, (5, 5))
+            erosion = cv2.erode(img, kernel)
+            self.processed_cv = erosion
+
+        elif method == "膨胀":
+            kernel = cv2.getStructuringElement(cv2.MORPH_CROSS, (5, 5))
+            dilation = cv2.dilate(img, kernel)
+            self.processed_cv = dilation
 
         else:
             QMessageBox.warning(self, "提示", "未知的增强类型")
