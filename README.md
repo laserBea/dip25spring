@@ -54,7 +54,7 @@ pip install -r requirements.txt
 ```
 
 ### 模型文件
-- YOLO模型：`runs/detect/train4/weights/best.pt`
+- YOLO模型：`runs/detect/train5/weights/best.pt`
 - PaddleOCR模型：自动下载
 
 ## 使用说明
@@ -73,19 +73,19 @@ python main.py
 ## 项目结构
 ```
 .
-├── main.py              # 主程序入口
+├── main.py             # 主程序入口
 ├── PTL.py              # 车牌识别核心算法
 ├── requirements.txt    # 依赖包列表
-├── split.py            # CCPD数据集分割
-├── convert2YOLO.py            # CCPD数据集转yolo格式
 ├── test.py             # 模型测试
-├── requirements.txt    # 
-├── runs/              # YOLO模型权重
+├── runs/               # YOLO模型权重
 │   └── detect/
-│       └── train4/
+│       └── train5/
 │           └── weights/
 │               └── best.pt    #车牌检测模型
-└── dataset/           # 训练数据集
+├── utils/                  # 数据集工具
+│   └── split.py            # CCPD数据集分割
+│   └── convert2YOLO.py     # CCPD数据集转yolo格式
+└── dataset/             # 训练数据集
 ```
 
 ## 引用说明
