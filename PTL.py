@@ -1,6 +1,21 @@
 import numpy as np
 import cv2
 
+def detect_plate_corners(cropped_img):
+    # 检测图像中的四个角点（近似矩形）
+    gray = cv2.cvtColor(cropped_img, cv2.COLOR_BGR2GRAY)
+    gray = cv2.bilateralFilter(gray, 11, 17, 17)
+    edged = cv2.Canny(gray, 30, 200)
+
+    contours, _ = cv2.findContours(edged.copy(), cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours = sorted(contours, key=cv2.contourArea, reverse=True)[:10]
+
+    for c in contours:
+        peri = cv2.arcLength(c, True)
+        approx = cv2.approxPolyDP(c, 0.02 * peri, True)
+        if len(approx) == 4:
+            return approx.reshape(4, 2)
+    return None
 
 def four_point_transform(image, pts):
     # 获取输入坐标点并进行透视变换
@@ -54,11 +69,20 @@ def plate_recognize(img, box, ocr):
                                        cv2.THRESH_BINARY, 11, 2)
             processed_img = cv2.cvtColor(thresh, cv2.COLOR_GRAY2BGR)
         except cv2.error:
-            # 如果图像处理失败，使用原始裁剪图像
-            processed_img = cropped_image
+            processed_img = cropped_image   # 如果图像处理失败，使用原始裁剪图像
+
+        # 尝试检测四角点
+        corners = detect_plate_corners(processed_img)
+        if corners is not None:
+            # 将角点坐标映射回原图
+            corners[:, 0] += x1
+            corners[:, 1] += y1
+            warped_img = four_point_transform(processed_img, corners)
+        else:
+            warped_img = processed_img  # 如果检测不到角点，就用原始裁剪图像
 
         # OCR识别
-        result = ocr.predict(processed_img)
+        result = ocr.predict(warped_img)
         print(result)
         if not result or not result[0]:
             return ""
