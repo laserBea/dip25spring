@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import (
 )
 from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt
+from fontTools.ttx import process
 from paddleocr import TextRecognition
 from ultralytics import YOLO
 from PTL import *
@@ -144,7 +145,12 @@ class ImageEnhancer(QWidget):
             if hasattr(box, 'cpu'):
                 box = box.cpu().numpy()
             plate = plate_recognize(image, box, self.ocr)
-            plate_texts.append(plate)
+            ALLOWED_CHARS = set(
+                "京津沪渝冀晋辽吉黑苏浙皖闽赣鲁豫鄂湘粤琼川贵云陕甘青蒙桂宁新藏"
+                "ABCDEFGHJKLMNPQRSTUVWXYZ0123456789"
+            )
+            processed_text = "".join([c for c in plate if c in ALLOWED_CHARS])
+            plate_texts.append(processed_text)
 
         self.label_text.setText("识别结果：" + " | ".join(plate_texts))
 
