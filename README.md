@@ -62,6 +62,7 @@ pip install -r requirements.txt
 1. 启动程序
 ```bash
 python main.py
+python park.py
 ```
 
 2. 基本操作
@@ -74,6 +75,7 @@ python main.py
 ```
 .
 ├── main.py             # 主程序入口
+├── park.py             # 模拟停车场收费系统入口
 ├── PTL.py              # 车牌识别核心算法
 ├── requirements.txt    # 依赖包列表
 ├── test.py             # 模型测试
